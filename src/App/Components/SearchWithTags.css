@@ -1,0 +1,90 @@
+.react-tags {
+    font-family: "Prompt";
+    position: center;
+    padding: 6px 0 0 6px;
+    border: 1px solid #d1d1d1;
+    border-radius: 1px;
+    width: 60vw;
+    margin: auto;
+    margin-top: 30vh;
+    /* shared font styles */
+    font-size: 1em;
+    line-height: 1.2;
+    border-radius: 25px;
+    /* clicking anywhere will focus the input */
+    cursor: text;
+}
+
+.react-tags.is-focused {
+    border-color: #b1b1b1;
+}
+
+.react-tags__selected {
+    display: inline;
+}
+
+.react-tags__selected-tag {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 6px 6px 0;
+    padding: 6px 8px;
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    background: #f1f1f1;
+
+    /* match the font styles */
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.react-tags__selected-tag:after {
+    content: "\2715";
+    color: #aaa;
+    margin-left: 8px;
+}
+
+.react-tags__selected-tag:hover,
+.react-tags__selected-tag:focus {
+    border-color: #8f8f8f;
+}
+
+.react-tags__search {
+    display: inline-block;
+
+    /* match tag layout */
+    padding: 7px 2px;
+    margin-bottom: 6px;
+
+    /* prevent autoresize overflowing the container */
+    max-width: 100%;
+}
+
+.react-tags__suggestions ul {
+    margin: 4px -1px;
+    padding: 0;
+    list-style: none;
+    background: white;
+    border: 1px solid #d1d1d1;
+    border-radius: 2px;
+}
+
+.react-tags__suggestions li {
+}
+
+.react-tags__suggestions li:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #949494;
+}
+
+.react-tags__suggestions li.is-active {
+    border-bottom: 1px solid #949494;
+}
+
+.react-tags__search-input {
+    border: none;
+    outline: none;
+}
+
+.react-tags__search-input.react-tags.is-focused {
+    outline: none;
+}

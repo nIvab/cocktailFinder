@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import LoadingScreen from "./Components/LoadingScreen";
-import SearchBar from "./Components/Search";
+import React, { useEffect, useState } from "react";
 
+import LoadingScreen from "./Components/LoadingScreen";
+import SearchWithTags from "./Components/SearchWithTags";
 function App() {
     let initial = [];
     const [isLoading, setLoading] = useState(true);
@@ -9,24 +9,23 @@ function App() {
     // grab list of drinks from api
 
     async function getItemList() {
-        return new Promise((resolve, reject) => {
-            fetch(
-                "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
-                {
-                    mode: "cors",
-                }
-            )
-                .then((response) => {
-                    return response.json();
-                })
-                .then((jObj) => {
-                    let data = jObj;
-                    setIngredients(data);
-                    resolve(data);
-                });
-        });
+        let response = await fetch(
+            "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
+            {
+                mode: "cors",
+            }
+        );
+        let data = await response.json();
+        console.log(data);
+        return data;
     }
-    getItemList();
+
+    useEffect(() => {
+        getItemList().then((data) => {
+            setIngredients(data);
+            setLoading(false);
+        });
+    }, [setIngredients, setLoading]);
 
     if (isLoading === true) {
         return (
@@ -37,7 +36,7 @@ function App() {
     } else {
         return (
             <div>
-                <SearchBar ingredients={ingredients} />
+                <SearchWithTags ingredients={ingredients} />
             </div>
         );
     }

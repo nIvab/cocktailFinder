@@ -128,3 +128,10 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+/* -------------------- RESET ABOVE THIS LINE -------------------- */
+.CC {
+    font-family: "Montserrat";
+    text-align: center;
+    font-size: 40pt;
+    padding: 50px;
+}
