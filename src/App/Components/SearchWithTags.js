@@ -18,6 +18,8 @@ const SearchWithTags = ({ ingredients }) => {
 
     cleanData();
 
+    /* ------------------ CLEANING DATA ABOVE THIS LINE ---------------- */
+
     let initial = [
         {
             id: 0,
@@ -30,29 +32,30 @@ const SearchWithTags = ({ ingredients }) => {
 
     let reactTags = React.useRef();
 
-    function onDelete(i) {
-        console.log("delete tag");
-        let newTags = tags.slice(0);
-        setTags(newTags.splice(i, 0));
-    }
+    const handleDelete = (i) => {
+        const newTags = tags;
+        newTags.splice(i, 1);
+        setTags(newTags);
+    };
 
-    function onAddition(newTag) {
+    const handleAddition = (newTag) => {
         console.log("add tag");
         setTags([].concat(tags, newTag));
-    }
+    };
 
     return (
-        <div>
+        <div className="SearchWithTags">
             <ReactTags
                 ref={reactTags}
                 tags={tags}
                 suggestions={suggestions}
-                onDelete={onDelete}
-                onAddition={onAddition}
+                onDelete={handleDelete}
+                onAddition={handleAddition}
                 allowNew
-                placeholder="What do you have laying around?"
+                placeholderText="What do you have laying around? e.g whiskey, limes, bitters,..."
                 minQueryLength={1}
             />
+            <button class="submitSearch">Find me a drink!</button>
         </div>
     );
 };

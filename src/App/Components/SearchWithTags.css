@@ -13,6 +13,7 @@
     border-radius: 25px;
     /* clicking anywhere will focus the input */
     cursor: text;
+    margin-left: 20%;
 }
 
 .react-tags.is-focused {
@@ -24,6 +25,7 @@
 }
 
 .react-tags__selected-tag {
+    font-family: "Prompt";
     display: inline-block;
     box-sizing: border-box;
     margin: 0 6px 6px 0;
@@ -92,6 +94,10 @@
     padding: 6px 8px;
 }
 
+.react-tags__suggestions li mark {
+    font-weight: 600;
+}
+
 .react-tags__suggestions li:hover {
     cursor: pointer;
     border-bottom: 1px solid #949494;
@@ -102,10 +108,37 @@
 }
 
 .react-tags__search-input {
+    font-family: "Prompt";
     border: none;
     outline: none;
 }
 
 .react-tags__search-input.react-tags.is-focused {
     outline: none;
+}
+
+/*----------------- CSS FOR SEARCH WITH TAGS ABOVE ----------------------- */
+.SearchWithTags {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-right: 10%;
+}
+
+.submitSearch {
+    font-family: "Prompt";
+    border: none;
+    background-color: black;
+    color: whitesmoke;
+    padding: 10px;
+    width: 10%;
+    border-radius: 25px;
+    font-size: 12pt;
+    margin-bottom: 2px;
+    outline: none;
+}
+
+.submitSearch:hover {
+    background-color: whitesmoke;
+    color: black;
 }
