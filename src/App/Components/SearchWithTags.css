@@ -1,6 +1,6 @@
 .react-tags {
     font-family: "Prompt";
-    position: center;
+    position: relative;
     padding: 6px 0 0 6px;
     border: 1px solid #d1d1d1;
     border-radius: 1px;
@@ -59,16 +59,37 @@
     max-width: 100%;
 }
 
+.react-tags__suggestions {
+    position: absolute;
+    top: 52%;
+    width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+    .react-tags__suggestions {
+        width: 240px;
+        top: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .react-tags__suggestions {
+        position: relative;
+        width: 120px;
+    }
+}
+
 .react-tags__suggestions ul {
     margin: 4px -1px;
     padding: 0;
     list-style: none;
     background: white;
-    border: 1px solid #d1d1d1;
     border-radius: 2px;
 }
 
 .react-tags__suggestions li {
+    border-bottom: 1px solid #ddd;
+    padding: 6px 8px;
 }
 
 .react-tags__suggestions li:hover {

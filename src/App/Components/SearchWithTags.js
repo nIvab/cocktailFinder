@@ -32,7 +32,8 @@ const SearchWithTags = ({ ingredients }) => {
 
     function onDelete(i) {
         console.log("delete tag");
-        setTags(tags.splice(i, 0));
+        let newTags = tags.slice(0);
+        setTags(newTags.splice(i, 0));
     }
 
     function onAddition(newTag) {
@@ -48,6 +49,9 @@ const SearchWithTags = ({ ingredients }) => {
                 suggestions={suggestions}
                 onDelete={onDelete}
                 onAddition={onAddition}
+                allowNew
+                placeholder="What do you have laying around?"
+                minQueryLength={1}
             />
         </div>
     );
