@@ -8,7 +8,7 @@ function App() {
     const [ingredients, setIngredients] = useState(initial);
     // grab list of drinks from api
 
-    async function getItemList() {
+    async function getIngredientList() {
         let response = await fetch(
             "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
             {
@@ -21,7 +21,7 @@ function App() {
     }
 
     useEffect(() => {
-        getItemList().then((data) => {
+        getIngredientList().then((data) => {
             setIngredients(data);
             setLoading(false);
         });
