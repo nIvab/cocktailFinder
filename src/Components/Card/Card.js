@@ -16,3 +16,5 @@ function Card(drink) {
         </motion.li>
     );
 }
+
+export default Card;

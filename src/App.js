@@ -2,13 +2,31 @@ import React, { useEffect, useState } from "react";
 
 import LoadingScreen from "./Components/LoadingScreen";
 import SearchWithTags from "./Components/SearchWithTags";
+import CardList from "./Components/Card/CardList";
+import apiSearchCall, { apiInitialCall } from "./utilities/apiSearchCall";
+
 function App() {
     let initial = [];
+    const [initalLoad, setInitialLoad] = useState(true);
     const [isLoading, setLoading] = useState(true);
     const [ingredients, setIngredients] = useState(initial);
-    // grab list of drinks from api
+    const [tags, setTags] = useState([
+        {
+            id: 0,
+            name: "Light rum",
+        },
+    ]);
+    // define new tags state so API  isnt called immediately
+    const [searchTags, setSearchTags] = useState(initial);
+    const [searchResults, setSearchResults] = useState(initial);
 
-    async function getIngredientList() {
+    // tags state is lifted up as both SearchWithTags and apiCallSearch need it
+
+    function onTagChange(newTag) {
+        setTags(newTag); // so that SearchWithTags can change tags
+    }
+
+    async function getIngredientsList() {
         let response = await fetch(
             "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
             {
@@ -16,18 +34,34 @@ function App() {
             }
         );
         let data = await response.json();
-        console.log(data);
         return data;
     }
 
     useEffect(() => {
-        getIngredientList().then((data) => {
-            setIngredients(data);
+        console.log("USEEFFECT RUNNING");
+        // for ingredient suggestions in SearchWithTags
+        apiInitialCall().then((data) => {
+            console.log(data);
+            setIngredients(data[0]);
+            setSearchResults(data[1]);
+            setInitialLoad(false);
+        });
+    }, []);
+
+    //--------------------------------------------------------------------------
+    // for the search
+    useEffect(() => {
+        console.log("SECOND USEEFFECT RUNNING");
+        apiSearchCall(tags).then((data) => {
+            console.log("SEARCH RESULTS:    ", data);
+            setSearchResults(data);
             setLoading(false);
         });
-    }, [setIngredients, setLoading]);
+    }, [setSearchResults, setLoading, tags]);
 
-    if (isLoading === true) {
+    //--------------------------------------------------------------------------
+
+    if (initalLoad === true) {
         return (
             <div>
                 <LoadingScreen />
@@ -36,10 +70,20 @@ function App() {
     } else {
         return (
             <div>
-                <SearchWithTags ingredients={ingredients} />
+                <SearchWithTags
+                    ingredients={ingredients}
+                    Tags={tags}
+                    handleTags={onTagChange}
+                />
+                {isLoading ? (
+                    <LoadingScreen />
+                ) : (
+                    <CardList list={searchResults} />
+                )}
             </div>
         );
     }
 }
 
+// card list goes in empty braces once API call sorted
 export default App;

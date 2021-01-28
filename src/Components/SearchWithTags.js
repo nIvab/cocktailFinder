@@ -3,7 +3,7 @@ import ReactTags from "react-tag-autocomplete";
 
 import "./SearchWithTags.css";
 
-const SearchWithTags = ({ ingredients }) => {
+const SearchWithTags = ({ ingredients, Tags, handleTags }) => {
     console.log("INPUT:     ", ingredients);
     let clean = [];
     const cleanData = () => {
@@ -12,42 +12,32 @@ const SearchWithTags = ({ ingredients }) => {
             //format JSON so that ReactTags likes it
             clean = [...clean, { id: i, name: ingredients[i].strIngredient1 }];
         }
-
-        console.log("cleaned:   ", clean);
     };
 
     cleanData();
 
     /* ------------------ CLEANING DATA ABOVE THIS LINE ---------------- */
 
-    let initial = [
-        {
-            id: 0,
-            name: "Light rum",
-        },
-    ];
-    const [tags, setTags] = useState(initial);
     const [suggestions] = useState(clean);
-    console.log("SUGGESTIONS:   ", suggestions, "TYPE:  ", typeof suggestions);
 
     let reactTags = React.useRef();
 
     const handleDelete = (i) => {
-        const newTags = tags;
+        const newTags = Tags;
         newTags.splice(i, 1);
-        setTags(newTags);
+        handleTags(newTags);
     };
 
     const handleAddition = (newTag) => {
         console.log("add tag");
-        setTags([].concat(tags, newTag));
+        handleTags([].concat(Tags, newTag));
     };
 
     return (
         <div className="SearchWithTags">
             <ReactTags
                 ref={reactTags}
-                tags={tags}
+                tags={Tags}
                 suggestions={suggestions}
                 onDelete={handleDelete}
                 onAddition={handleAddition}
@@ -55,7 +45,6 @@ const SearchWithTags = ({ ingredients }) => {
                 placeholderText="What do you have laying around? e.g whiskey, limes, bitters,..."
                 minQueryLength={1}
             />
-            <button class="submitSearch">Find me a drink!</button>
         </div>
     );
 };

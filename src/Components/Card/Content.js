@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import imperialToMetric from "./ImperialToMetric";
+import imperialToMetric from "../../utilities/imperialToMetric";
 
 function Content(drink) {
     // First we put all needed ingredients into an array so we can map the
@@ -42,7 +42,10 @@ function Content(drink) {
                         </li>;
                     })}
                 </ul>
+                <div className="Instructions">{drink.strInstructions}</div>
             </div>
         </motion.div>
     );
 }
+
+export default Content;
