@@ -1,6 +1,8 @@
 .LoadingScreen {
     font-style: italic;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Prompt", Helvetica, sans-serif;
+    font-size: 25pt;
     position: relative;
     text-align: center;
+    margin-top: 20vh;
 }

@@ -1,6 +1,21 @@
-avatar {
+.avatar {
     width: 40px;
     height: 40px;
     background-color: #666;
     border-radius: 20px;
+    padding: 80px;
+}
+
+li {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: blue;
 }

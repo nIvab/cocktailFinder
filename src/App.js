@@ -17,24 +17,12 @@ function App() {
         },
     ]);
     // define new tags state so API  isnt called immediately
-    const [searchTags, setSearchTags] = useState(initial);
     const [searchResults, setSearchResults] = useState(initial);
 
     // tags state is lifted up as both SearchWithTags and apiCallSearch need it
 
     function onTagChange(newTag) {
         setTags(newTag); // so that SearchWithTags can change tags
-    }
-
-    async function getIngredientsList() {
-        let response = await fetch(
-            "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
-            {
-                mode: "cors",
-            }
-        );
-        let data = await response.json();
-        return data;
     }
 
     useEffect(() => {

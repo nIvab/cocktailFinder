@@ -4,3 +4,16 @@
     margin-top: 20vh;
     font-size: 20pt;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat();
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+}

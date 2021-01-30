@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
 
 import "./CardList.css";
+import imperialToMetric from "../../utilities/imperialToMetric";
 import Card from "./Card";
 /* the input for cardlist, list has the following structure 
 {
@@ -13,20 +14,52 @@ import Card from "./Card";
 
  */
 
+function getIngredientsAndMeasurements(input) {
+    let ingredientArr = [];
+    ingredientArr.push([
+        input.strIngredient1,
+        imperialToMetric(input.strMeasure1),
+    ]);
+    for (let i = 1; i <= 15; i++) {
+        if (input[`strIngredient${i}`] == null) {
+            break;
+        } else {
+            ingredientArr.push([
+                input[`strIngredient${i}`],
+                imperialToMetric(input[`strMeasure${i}`]),
+                // first item in each sub array is the ingredient, second element is
+                // the amount needed. BEHAVIOUR EXHIBITED IN LINE 42
+            ]);
+        }
+    }
+    return ingredientArr;
+}
+function cleanInput(input) {
+    let cleaned = [];
+    cleaned.push({
+        key: input.idDrink,
+        drink: input.strDrink,
+        image: input.strDrinkThumb,
+        ingredients: getIngredientsAndMeasurements(input),
+        instructions: input.strInstructions,
+    });
+    return cleaned;
+}
 function CardList({ list }) {
     // generates cards of appropriate drinks from list given by API call
-    console.log("LIST:  ", list);
-    if (list.drinks === "None Found" || list.drinks == []) {
+    if (list.drinks === "None Found") {
+        console.log("NONE FOUND__from search, cardList");
         return <h1 className="NoDrinks">Sorry we could find any drinks</h1>;
     } else {
+        console.log("FOUND__ from search, in cardList");
         return (
             <AnimateSharedLayout>
-                <motion.div layout initial={{ borderRadius: 25 }}>
+                <motion.ul layout initial={{ borderRadius: 25 }}>
                     {list.drinks.map((listItem) => {
                         // map each drink to its own card
-                        <Card key={listItem} />;
+                        return <Card drink={cleanInput(listItem)} />;
                     })}
-                </motion.div>
+                </motion.ul>
             </AnimateSharedLayout>
         );
     }
