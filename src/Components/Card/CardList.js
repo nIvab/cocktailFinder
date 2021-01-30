@@ -20,7 +20,6 @@ function getIngredientsAndMeasurements(input) {
         if (input[`strIngredient${i}`] == null) {
             break;
         } else {
-            console.log("MEASURE:   ", input[`strMeasure${i}`]);
             ingredientArr.push([
                 input[`strIngredient${i}`],
                 imperialToMetric(input[`strMeasure${i}`]),
@@ -53,13 +52,10 @@ function cleanInput(input) {
     return cleaned;
 }
 function CardList({ list }) {
-    console.log("INPUT__cardList", list);
     // generates cards of appropriate drinks from list given by API call
     if (list.drinks === "None Found") {
-        console.log("NONE FOUND__from search, cardList");
         return <h1 className="NoDrinks">Sorry we could find any drinks</h1>;
     } else {
-        console.log("FOUND__ from search, in cardList");
         return (
             <AnimateSharedLayout>
                 <motion.ul

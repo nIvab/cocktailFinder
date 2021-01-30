@@ -8,7 +8,6 @@ function Card({ drink }) {
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     };
-    console.log("INGREDIENTS__cardList: ", drink.ingredients);
     return (
         <motion.li
             layout

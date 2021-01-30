@@ -26,10 +26,8 @@ This will be used in App.js
 */
 
 function aggregateID(input) {
-    console.log("AGGREGATE_SEARCH", input);
     let idArr = [];
     input = input.drinks;
-    console.log("INPUT___aggregateID", input);
     input.forEach((element) => {
         idArr.push(element.idDrink);
     });

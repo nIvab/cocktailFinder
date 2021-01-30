@@ -4,7 +4,6 @@ import ReactTags from "react-tag-autocomplete";
 import "./SearchWithTags.css";
 
 const SearchWithTags = ({ ingredients, Tags, handleTags }) => {
-    console.log("INPUT:     ", ingredients);
     let clean = [];
     const cleanData = () => {
         ingredients = ingredients.drinks; //array of obj.s in ingredients

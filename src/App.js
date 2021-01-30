@@ -32,7 +32,6 @@ function App() {
     }
 
     useEffect(() => {
-        console.log("USEEFFECT RUNNING");
         // for ingredient suggestions in SearchWithTags
         apiInitialCall().then((data) => {
             console.log(data);
@@ -45,17 +44,14 @@ function App() {
     //--------------------------------------------------------------------------
     // for the search
     useEffect(() => {
-        console.log("SECOND USEEFFECT RUNNING");
         apiSearchCall(tags).then((data) => {
             if (data.drinks === "None Found") {
                 setNoDrinks(true);
             } else {
-                console.log("DATA__ISEDF", data);
                 let idArr = aggregateID(data);
                 let drinks = [];
                 idArr.forEach((element) => {
                     apiIndividualCall(element).then((dataFinal) => {
-                        console.log("DATAFINAL_useEffect", dataFinal.drinks[0]);
                         drinks.push(dataFinal.drinks[0]);
                         setSearchResults({ drinks });
                     });

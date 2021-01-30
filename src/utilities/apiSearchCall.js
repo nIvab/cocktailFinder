@@ -27,7 +27,6 @@ async function apiSearchCall(input) {
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${cleanedInput}`
     );
     let data = await response.json();
-    console.log("DATA API SEARCH CALL :  ", data);
     return data;
 }
 
@@ -36,7 +35,6 @@ async function apiIndividualCall(input) {
         `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${input}`
     );
     let data = await response.json();
-    console.log(" API INDIVIDUAL SEARCH CALL :  ", data);
     return data;
 }
 
