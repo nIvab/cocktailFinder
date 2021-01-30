@@ -1,21 +1,23 @@
-.avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #666;
-    border-radius: 20px;
-    padding: 80px;
-}
-
-li {
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 200px;
-    height: 200px;
+.Card {
     overflow: hidden;
     cursor: pointer;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: blue;
+    background: #e8dab2;
+}
+
+.cardHeader {
+    font-family: "Oranienbaum";
+}
+
+.drinkImages {
+    width: 100%;
+    height: auto;
+}
+
+h2 {
+    font-size: 20pt;
+}
+
+.footer {
+    color: #4f6d7a;
+    padding: 25px;
 }

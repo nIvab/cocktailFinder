@@ -1,28 +1,22 @@
-ul,
-li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+img {
+    width: 100%;
+    height: auto;
 }
 
-ul {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    padding: 20px;
-    border-radius: 25px;
+.WrittenContent {
+    margin-top: 20px;
+    font-family: "Cantarell";
+    margin-left: 2%;
+    color: #4f6d7a;
 }
 
-li {
-    background-color: rgba(214, 214, 214, 0.5);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    cursor: pointer;
+.Ingredients {
+    list-style-type: circle;
+    margin-left: 10%;
 }
 
-li:last-child {
-    margin-bottom: 0px;
+.Instructions {
+    margin-top: 10px;
+    margin-left: 2%;
+    font-family: "Montserrat";
 }

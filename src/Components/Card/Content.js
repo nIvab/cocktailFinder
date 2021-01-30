@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import imperialToMetric from "../../utilities/imperialToMetric";
+import "./Content.css";
 
 function Content({ id, name, image, ingredientArr, instructions }) {
     // First we put all needed ingredients into an array so we can map the
     // array to an unordered list in return()
-    console.log("content", ingredientArr);
     //----------------------------------------------------------------------
     return (
         <motion.div
@@ -17,10 +17,10 @@ function Content({ id, name, image, ingredientArr, instructions }) {
         >
             <img src={image} alt={name}></img>
             <div className="WrittenContent">
-                <ul>
+                <ul class="Ingredients">
                     {ingredientArr.map((ingredientSubArr) => {
                         return (
-                            <li>
+                            <li class="ItemAndMeasure">
                                 {ingredientSubArr[0]}, {ingredientSubArr[1]}
                             </li>
                         );

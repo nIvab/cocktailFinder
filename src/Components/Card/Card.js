@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import Content from "./Content";
-
+import "./Card.css";
 function Card({ drink }) {
     drink = drink[0];
     const [isOpen, setIsOpen] = useState(false);
-
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     };
     console.log("asdas: ", drink.ingredients);
     return (
-        <motion.li layout onClick={toggleOpen} initial={{ borderRadius: 10 }}>
+        <motion.li
+            layout
+            class="Card"
+            onClick={toggleOpen}
+            initial={{ borderRadius: 10 }}
+        >
             <motion.div className="avatar" layout></motion.div>
-            <h2>{drink.drink}</h2>
+            {!isOpen && (
+                <img class="drinkImages" src={drink.image} alt={drink.drink} />
+            )}
             <AnimatePresence>
                 {isOpen && (
                     <Content
@@ -25,6 +31,9 @@ function Card({ drink }) {
                     />
                 )}
             </AnimatePresence>
+            <div class="footer">
+                <h2 class="cardHeader">{drink.drink}</h2>
+            </div>
         </motion.li>
     );
 }

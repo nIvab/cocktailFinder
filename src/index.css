@@ -130,8 +130,13 @@ table {
 }
 /* -------------------- RESET ABOVE THIS LINE -------------------- */
 .CC {
-    font-family: "Montserrat";
+    font-family: "Oranienbaum";
     text-align: center;
-    font-size: 40pt;
+    font-size: 60pt;
     padding: 50px;
+    color: #4f6d7a;
+}
+
+body {
+    background-color: #eaeaea;
 }

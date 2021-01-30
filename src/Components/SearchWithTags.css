@@ -1,12 +1,12 @@
 .react-tags {
-    font-family: "Prompt";
+    font-family: "Cantarell";
     position: relative;
     padding: 6px 0 0 6px;
-    border: 1px solid #d1d1d1;
+    border: 1px solid #4f6d7a;
     border-radius: 1px;
     width: 60vw;
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 5vh;
     /* shared font styles */
     font-size: 1em;
     line-height: 1.2;
@@ -17,7 +17,7 @@
 }
 
 .react-tags.is-focused {
-    border-color: #b1b1b1;
+    border-color: #98c1d9;
 }
 
 .react-tags__selected {
@@ -25,14 +25,15 @@
 }
 
 .react-tags__selected-tag {
-    font-family: "Prompt";
+    font-family: "Cantarell";
+    color: #4f6d7a;
     display: inline-block;
     box-sizing: border-box;
     margin: 0 6px 6px 0;
     padding: 6px 8px;
     border: 1px solid #d1d1d1;
     border-radius: 20px;
-    background: #f1f1f1;
+    background: #c0d6df;
 
     /* match the font styles */
     font-size: inherit;
@@ -41,7 +42,7 @@
 
 .react-tags__selected-tag:after {
     content: "\2715";
-    color: #aaa;
+    color: rgb(253, 253, 253);
     margin-left: 8px;
 }
 
@@ -85,32 +86,39 @@
     margin: 4px -1px;
     padding: 0;
     list-style: none;
-    background: white;
+    font-family: "Cantarell";
+    background: #eaeaea;
+    color: #4f6d7a;
     border-radius: 2px;
 }
 
 .react-tags__suggestions li {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #4f6d7a;
     padding: 6px 8px;
 }
 
 .react-tags__suggestions li mark {
     font-weight: 600;
+    background-color: #eaeaea;
 }
 
 .react-tags__suggestions li:hover {
     cursor: pointer;
-    border-bottom: 1px solid #949494;
+    border-bottom: 1px solid #dd6e42;
 }
 
 .react-tags__suggestions li.is-active {
-    border-bottom: 1px solid #949494;
+    border-bottom: 1px solid #dd6e42;
 }
 
 .react-tags__search-input {
-    font-family: "Prompt";
+    font-family: "Cantarell";
+    font-size: 12pt;
     border: none;
     outline: none;
+    background-color: #eaeaea;
+    color: #4f6d7a;
+    text-emphasis: 10%;
 }
 
 .react-tags__search-input.react-tags.is-focused {
@@ -125,20 +133,6 @@
     justify-items: center;
     justify-content: space-between;
     margin-right: 10%;
-}
-
-.submitSearch {
-    font-family: "Prompt";
-    border: none;
-    background-color: black;
-    color: whitesmoke;
-    padding: 10px;
-    width: 180px;
-    border-radius: 25px;
-    margin-left: 50px;
-    font-size: 12pt;
-    margin-bottom: 2px;
-    outline: none;
 }
 
 .submitSearch:hover {

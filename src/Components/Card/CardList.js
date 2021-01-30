@@ -16,14 +16,11 @@ import Card from "./Card";
 
 function getIngredientsAndMeasurements(input) {
     let ingredientArr = [];
-    ingredientArr.push([
-        input.strIngredient1,
-        imperialToMetric(input.strMeasure1),
-    ]);
     for (let i = 1; i <= 15; i++) {
         if (input[`strIngredient${i}`] == null) {
             break;
         } else {
+            console.log("MEASURE:   ", input[`strMeasure${i}`]);
             ingredientArr.push([
                 input[`strIngredient${i}`],
                 imperialToMetric(input[`strMeasure${i}`]),
@@ -36,13 +33,23 @@ function getIngredientsAndMeasurements(input) {
 }
 function cleanInput(input) {
     let cleaned = [];
-    cleaned.push({
-        key: input.idDrink,
-        drink: input.strDrink,
-        image: input.strDrinkThumb,
-        ingredients: getIngredientsAndMeasurements(input),
-        instructions: input.strInstructions,
-    });
+    if (input.strDrinkThumb == null) {
+        cleaned.push({
+            key: input.idDrink,
+            drink: input.strDrink,
+            image: input.strImageSource,
+            ingredients: getIngredientsAndMeasurements(input),
+            instructions: input.strInstructions,
+        });
+    } else {
+        cleaned.push({
+            key: input.idDrink,
+            drink: input.strDrink,
+            image: input.strDrinkThumb,
+            ingredients: getIngredientsAndMeasurements(input),
+            instructions: input.strInstructions,
+        });
+    }
     return cleaned;
 }
 function CardList({ list }) {
@@ -54,7 +61,11 @@ function CardList({ list }) {
         console.log("FOUND__ from search, in cardList");
         return (
             <AnimateSharedLayout>
-                <motion.ul layout initial={{ borderRadius: 25 }}>
+                <motion.ul
+                    layout
+                    initial={{ borderRadius: 25 }}
+                    class="container"
+                >
                     {list.drinks.map((listItem) => {
                         // map each drink to its own card
                         return <Card drink={cleanInput(listItem)} />;
