@@ -31,6 +31,15 @@ async function apiSearchCall(input) {
     return data;
 }
 
+async function apiIndividualCall(input) {
+    let response = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${input}`
+    );
+    let data = await response.json();
+    console.log(" API INDIVIDUAL SEARCH CALL :  ", data);
+    return data;
+}
+
 async function apiInitialCall() {
     let responseIngredients = await fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list",
@@ -49,4 +58,4 @@ async function apiInitialCall() {
 }
 
 export default apiSearchCall;
-export { apiInitialCall };
+export { apiInitialCall, apiIndividualCall };

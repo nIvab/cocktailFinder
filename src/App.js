@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import LoadingScreen from "./Components/LoadingScreen";
 import SearchWithTags from "./Components/SearchWithTags";
 import CardList from "./Components/Card/CardList";
-import apiSearchCall, { apiInitialCall } from "./utilities/apiSearchCall";
+import apiSearchCall, {
+    apiInitialCall,
+    apiIndividualCall,
+} from "./utilities/apiSearchCall";
+import aggregateID from "./utilities/aggregateSearch";
+import NoDrinks from "./Components/NoDrinks";
 
 function App() {
     let initial = [];
@@ -18,10 +23,11 @@ function App() {
     ]);
     // define new tags state so API  isnt called immediately
     const [searchResults, setSearchResults] = useState(initial);
-
+    const [noDrinks, setNoDrinks] = useState(false);
     // tags state is lifted up as both SearchWithTags and apiCallSearch need it
 
     function onTagChange(newTag) {
+        setLoading(true);
         setTags(newTag); // so that SearchWithTags can change tags
     }
 
@@ -41,9 +47,21 @@ function App() {
     useEffect(() => {
         console.log("SECOND USEEFFECT RUNNING");
         apiSearchCall(tags).then((data) => {
-            console.log("SEARCH RESULTS:    ", data);
-            setSearchResults(data);
-            setLoading(false);
+            if (data.drinks === "None Found") {
+                setNoDrinks(true);
+            } else {
+                console.log("DATA__ISEDF", data);
+                let idArr = aggregateID(data);
+                let drinks = [];
+                idArr.forEach((element) => {
+                    apiIndividualCall(element).then((dataFinal) => {
+                        console.log("DATAFINAL_useEffect", dataFinal.drinks[0]);
+                        drinks.push(dataFinal.drinks[0]);
+                        setSearchResults({ drinks });
+                    });
+                });
+                setLoading(false);
+            }
         });
     }, [setSearchResults, setLoading, tags]);
 
@@ -63,7 +81,9 @@ function App() {
                     Tags={tags}
                     handleTags={onTagChange}
                 />
-                {isLoading ? (
+                {noDrinks == true ? (
+                    <NoDrinks />
+                ) : isLoading ? (
                     <LoadingScreen />
                 ) : (
                     <CardList list={searchResults} />

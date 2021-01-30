@@ -53,6 +53,7 @@ function cleanInput(input) {
     return cleaned;
 }
 function CardList({ list }) {
+    console.log("INPUT__cardList", list);
     // generates cards of appropriate drinks from list given by API call
     if (list.drinks === "None Found") {
         console.log("NONE FOUND__from search, cardList");
