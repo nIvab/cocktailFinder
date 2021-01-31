@@ -1,7 +1,10 @@
 .Card {
     overflow: hidden;
     cursor: pointer;
-    background: #e8dab2;
+    width: 300px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .cardHeader {
@@ -10,7 +13,7 @@
 
 .drinkImages {
     width: 100%;
-    height: auto;
+    height: 400px;
 }
 
 h2 {
@@ -20,4 +23,8 @@ h2 {
 .footer {
     color: #4f6d7a;
     padding: 25px;
+}
+
+.mystery-container {
+    background: #e8dab2;
 }

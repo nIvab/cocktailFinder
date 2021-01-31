@@ -8,6 +8,7 @@ function Content({ id, name, image, ingredientArr, instructions }) {
     // First we put all needed ingredients into an array so we can map the
     // array to an unordered list in return()
     //----------------------------------------------------------------------
+    console.log("CONTENT:   ", id);
     return (
         <motion.div
             layout
@@ -15,12 +16,11 @@ function Content({ id, name, image, ingredientArr, instructions }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <img src={image} alt={name}></img>
             <div className="WrittenContent">
                 <ul class="Ingredients">
                     {ingredientArr.map((ingredientSubArr) => {
                         return (
-                            <li class="ItemAndMeasure">
+                            <li class="ItemAndMeasure" key={ingredientSubArr}>
                                 {ingredientSubArr[0]}, {ingredientSubArr[1]}
                             </li>
                         );

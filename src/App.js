@@ -77,7 +77,7 @@ function App() {
                     Tags={tags}
                     handleTags={onTagChange}
                 />
-                {noDrinks == true ? (
+                {noDrinks === true ? (
                     <NoDrinks />
                 ) : isLoading ? (
                     <LoadingScreen />

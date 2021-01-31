@@ -57,7 +57,7 @@ function CardList({ list }) {
         return <h1 className="NoDrinks">Sorry we could find any drinks</h1>;
     } else {
         return (
-            <AnimateSharedLayout>
+            <div>
                 <motion.ul
                     layout
                     initial={{ borderRadius: 25 }}
@@ -65,10 +65,15 @@ function CardList({ list }) {
                 >
                     {list.drinks.map((listItem) => {
                         // map each drink to its own card
-                        return <Card drink={cleanInput(listItem)} />;
+                        return (
+                            <Card
+                                key={listItem.drink}
+                                drink={cleanInput(listItem)}
+                            />
+                        );
                     })}
                 </motion.ul>
-            </AnimateSharedLayout>
+            </div>
         );
     }
 }

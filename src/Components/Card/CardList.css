@@ -7,9 +7,12 @@
 
 .container {
     list-style-type: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
     margin: 50px;
-    grid-gap: 10em;
+    /* grid-gap: 10em; */
     border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
