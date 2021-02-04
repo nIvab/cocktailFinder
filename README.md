@@ -26,10 +26,10 @@
     <img src="./images/logo.png" alt="Logo" >
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">Cocktail Crawler</h3>
 
   <p align="center">
-    project_description
+    Website to help decide what you're drinking tonight
     <br />
     <a href="https://github.com/nIvab/cocktailFinder"><strong>Explore the docs »</strong></a>
     <br />
