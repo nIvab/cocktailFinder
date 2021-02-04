@@ -17,6 +17,7 @@ import Card from "./Card";
 function getIngredientsAndMeasurements(input) {
     let ingredientArr = [];
     for (let i = 1; i <= 15; i++) {
+        console.log("ingAndMEa", input[`strIngredient${i}`]);
         if (input[`strIngredient${i}`] == null) {
             break;
         } else {
@@ -31,8 +32,10 @@ function getIngredientsAndMeasurements(input) {
     return ingredientArr;
 }
 function cleanInput(input) {
+    console.log("cleanInput called");
     let cleaned = [];
     if (input.strDrinkThumb == null) {
+        console.log("the null");
         cleaned.push({
             key: input.idDrink,
             drink: input.strDrink,
@@ -41,6 +44,7 @@ function cleanInput(input) {
             instructions: input.strInstructions,
         });
     } else {
+        console.log("not the null");
         cleaned.push({
             key: input.idDrink,
             drink: input.strDrink,
@@ -52,22 +56,24 @@ function cleanInput(input) {
     return cleaned;
 }
 function CardList({ list }) {
+    console.log("cardList", list);
     // generates cards of appropriate drinks from list given by API call
     if (list.drinks === "None Found") {
         return <h1 className="NoDrinks">Sorry we could find any drinks</h1>;
     } else {
+        console.log("check passed", list.drinks);
         return (
             <div>
                 <motion.ul
                     layout
                     initial={{ borderRadius: 25 }}
-                    class="container"
+                    className="container"
                 >
                     {list.drinks.map((listItem) => {
                         // map each drink to its own card
                         return (
                             <Card
-                                key={listItem.drink}
+                                key={listItem.idDrink}
                                 drink={cleanInput(listItem)}
                             />
                         );

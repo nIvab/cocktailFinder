@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import Content from "./Content";
 import "./Card.css";
-function Card({ drink }) {
+const Card = React.memo(({ drink }) => {
+    console.log("card running", drink);
     drink = drink[0];
     const [isOpen, setIsOpen] = useState(false);
     const toggleOpen = () => {
@@ -10,15 +11,15 @@ function Card({ drink }) {
     };
 
     return (
-        <li class="Card">
+        <li className="Card">
             <motion.div
                 layout
                 onClick={toggleOpen}
                 initial={{ borderRadius: 10 }}
-                class="mystery-container"
+                className="mystery-container"
             >
                 <motion.img
-                    class="drinkImages"
+                    className="drinkImages"
                     src={drink.image}
                     alt={drink.drink}
                     exit={{ opacity: 0 }}
@@ -47,12 +48,12 @@ function Card({ drink }) {
                         )}
                     </AnimatePresence>
                 </motion.div>
-                <motion.div class="footer">
-                    <motion.h2 class="cardHeader">{drink.drink}</motion.h2>
+                <motion.div className="footer">
+                    <motion.h2 className="cardHeader">{drink.drink}</motion.h2>
                 </motion.div>
             </motion.div>
         </li>
     );
-}
+});
 
 export default Card;

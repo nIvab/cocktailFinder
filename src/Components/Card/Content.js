@@ -17,10 +17,13 @@ function Content({ id, name, image, ingredientArr, instructions }) {
             exit={{ opacity: 0 }}
         >
             <div className="WrittenContent">
-                <ul class="Ingredients">
+                <ul className="Ingredients">
                     {ingredientArr.map((ingredientSubArr) => {
                         return (
-                            <li class="ItemAndMeasure" key={ingredientSubArr}>
+                            <li
+                                className="ItemAndMeasure"
+                                key={ingredientSubArr}
+                            >
                                 {ingredientSubArr[0]}, {ingredientSubArr[1]}
                             </li>
                         );

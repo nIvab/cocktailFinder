@@ -7,7 +7,7 @@ import apiSearchCall, {
     apiInitialCall,
     apiIndividualCall,
 } from "./utilities/apiSearchCall";
-import aggregateID from "./utilities/aggregateSearch";
+import aggregateID, { aggregateSearch } from "./utilities/aggregateSearch";
 import NoDrinks from "./Components/NoDrinks";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         },
     ]);
     // define new tags state so API  isnt called immediately
-    const [searchResults, setSearchResults] = useState(initial);
+    const [searchResults, setSearchResults] = useState({});
     const [noDrinks, setNoDrinks] = useState(false);
     // tags state is lifted up as both SearchWithTags and apiCallSearch need it
 
@@ -44,25 +44,25 @@ function App() {
     //--------------------------------------------------------------------------
     // for the search
     useEffect(() => {
+        let drinks_temp = [];
         apiSearchCall(tags).then((data) => {
             if (data.drinks === "None Found") {
                 setNoDrinks(true);
             } else {
                 let idArr = aggregateID(data);
-                let drinks = [];
                 idArr.forEach((element) => {
                     apiIndividualCall(element).then((dataFinal) => {
-                        drinks.push(dataFinal.drinks[0]);
-                        setSearchResults({ drinks });
+                        drinks_temp.push(dataFinal.drinks[0]);
                     });
                 });
-                setLoading(false);
             }
         });
+        let drinks = drinks_temp;
+        setSearchResults({ drinks });
+        setLoading(false);
     }, [setSearchResults, setLoading, tags]);
-
     //--------------------------------------------------------------------------
-
+    console.log("App.js__BEFORE RETURN", searchResults);
     if (initalLoad === true) {
         return (
             <div>

@@ -25,6 +25,8 @@ allowing us to pass through all the needed content for our drink cards
 This will be used in App.js 
 */
 
+import { apiIndividualCall } from "./apiSearchCall";
+
 function aggregateID(input) {
     let idArr = [];
     input = input.drinks;
@@ -34,9 +36,15 @@ function aggregateID(input) {
     return idArr;
 }
 
-// function aggregateSearch(inputArr){
-//     let drinksObj = {};
-//     forEachj
-// }
+function aggregateSearch(inputArr) {
+    let drinks = [];
+    inputArr.forEach((element) => {
+        apiIndividualCall(element).then((data) => {
+            drinks.push(data.drinks[0]);
+        });
+    });
+    return drinks;
+}
 
 export default aggregateID;
+export { aggregateSearch };
