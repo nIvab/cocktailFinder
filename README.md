@@ -72,8 +72,7 @@
 
 ## About The Project
 
-[![Cocktail Crawler Screen Shot][product-screenshot]](https://i.imgur.com/agSsvVh.mp4)
-
+<img src="./images/example.gif" alt="example of site" >
 _Cocktail Crawler_ is a web-application designed to give inspiration, or spice up your evening knock off with hundreds of recommendations of cocktails that use the ingredients you have immediately available to you!
 
 _Cocktail Crawler_ is a front-end to [TheCockTailDB](https://www.thecocktaildb.com/)
@@ -140,7 +139,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Ivan Bolderoff- [LinkedIn](https://twitter.com/twitter_handle) - ivanbolderoff@gmail.com
+Ivan Bolderoff- [LinkedIn](https://www.linkedin.com/in/ivanbolderoff/) - ivanbolderoff@gmail.com
 
 Project Link: [https://github.com/nIvab/cocktailFinder](https://github.com/nIvab/cocktailFinder)
 
