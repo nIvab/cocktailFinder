@@ -18,14 +18,12 @@ The input of this function will be a JSON in the form of
     ]
 }
 
-The purpose of this function is to take all the drinks that the search provides us, 
-and collate the large JSON files associated with each drink into one object. Thus 
-allowing us to pass through all the needed content for our drink cards 
+The purpose of this function is to aggregate all the id's of drinks from 
+the result of apiSearchCall to facilitate the use of apiIndividual call
+
 
 This will be used in App.js 
 */
-
-import { apiIndividualCall } from "./apiSearchCall";
 
 function aggregateID(input) {
     let idArr = [];
@@ -36,15 +34,4 @@ function aggregateID(input) {
     return idArr;
 }
 
-function aggregateSearch(inputArr) {
-    let drinks = [];
-    inputArr.forEach((element) => {
-        apiIndividualCall(element).then((data) => {
-            drinks.push(data.drinks[0]);
-        });
-    });
-    return drinks;
-}
-
 export default aggregateID;
-export { aggregateSearch };

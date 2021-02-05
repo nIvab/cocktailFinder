@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion";
 
 import "./CardList.css";
 import imperialToMetric from "../../utilities/imperialToMetric";
@@ -31,7 +31,6 @@ function getIngredientsAndMeasurements(input) {
     return ingredientArr;
 }
 function cleanInput(input) {
-    console.log("cleanInput called");
     let cleaned = [];
     if (input.strDrinkThumb == null) {
         console.log("the null");
@@ -43,7 +42,6 @@ function cleanInput(input) {
             instructions: input.strInstructions,
         });
     } else {
-        console.log("not the null");
         cleaned.push({
             key: input.idDrink,
             drink: input.strDrink,
@@ -55,12 +53,10 @@ function cleanInput(input) {
     return cleaned;
 }
 function CardList({ list }) {
-    console.log("cardList", list);
     // generates cards of appropriate drinks from list given by API call
     if (list.drinks === "None Found") {
         return <h1 className="NoDrinks">Sorry we could find any drinks</h1>;
     } else {
-        console.log("check passed", list.drinks);
         return (
             <div>
                 <motion.ul

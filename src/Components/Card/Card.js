@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Content from "./Content";
 import "./Card.css";
 const Card = React.memo(({ drink }) => {
-    console.log("card running", drink);
     drink = drink[0];
     const [isOpen, setIsOpen] = useState(false);
     const toggleOpen = () => {

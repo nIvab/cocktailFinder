@@ -1,14 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import imperialToMetric from "../../utilities/imperialToMetric";
 import "./Content.css";
 
 function Content({ id, name, image, ingredientArr, instructions }) {
     // First we put all needed ingredients into an array so we can map the
     // array to an unordered list in return()
     //----------------------------------------------------------------------
-    console.log("CONTENT:   ", id);
     return (
         <motion.div
             layout

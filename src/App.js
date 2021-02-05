@@ -7,7 +7,7 @@ import apiSearchCall, {
     apiInitialCall,
     apiIndividualCall,
 } from "./utilities/apiSearchCall";
-import aggregateID, { aggregateSearch } from "./utilities/aggregateSearch";
+import aggregateID from "./utilities/aggregateSearch";
 import NoDrinks from "./Components/NoDrinks";
 
 function App() {
@@ -34,7 +34,6 @@ function App() {
     useEffect(() => {
         // for ingredient suggestions in SearchWithTags
         apiInitialCall().then((data) => {
-            console.log(data);
             setIngredients(data[0]);
             setSearchResults(data[1]);
             setInitialLoad(false);
@@ -55,6 +54,7 @@ function App() {
                     });
                 });
                 Promise.all(drinksPromise).then((drinks) => {
+                    setNoDrinks(false);
                     setLoading(false);
                     setSearchResults({ drinks });
                 });
@@ -62,7 +62,6 @@ function App() {
         });
     }, [setSearchResults, setLoading, tags]);
     //--------------------------------------------------------------------------
-    console.log("App.js__BEFORE RETURN", searchResults);
     if (initalLoad === true) {
         return (
             <div>
