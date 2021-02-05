@@ -17,7 +17,6 @@ import Card from "./Card";
 function getIngredientsAndMeasurements(input) {
     let ingredientArr = [];
     for (let i = 1; i <= 15; i++) {
-        console.log("ingAndMEa", input[`strIngredient${i}`]);
         if (input[`strIngredient${i}`] == null) {
             break;
         } else {

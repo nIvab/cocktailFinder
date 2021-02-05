@@ -44,22 +44,22 @@ function App() {
     //--------------------------------------------------------------------------
     // for the search
     useEffect(() => {
-        let drinks_temp = [];
         apiSearchCall(tags).then((data) => {
             if (data.drinks === "None Found") {
                 setNoDrinks(true);
             } else {
                 let idArr = aggregateID(data);
-                idArr.forEach((element) => {
-                    apiIndividualCall(element).then((dataFinal) => {
-                        drinks_temp.push(dataFinal.drinks[0]);
+                let drinksPromise = idArr.map((element) => {
+                    return apiIndividualCall(element).then((searchData) => {
+                        return searchData.drinks[0];
                     });
+                });
+                Promise.all(drinksPromise).then((drinks) => {
+                    setLoading(false);
+                    setSearchResults({ drinks });
                 });
             }
         });
-        let drinks = drinks_temp;
-        setSearchResults({ drinks });
-        setLoading(false);
     }, [setSearchResults, setLoading, tags]);
     //--------------------------------------------------------------------------
     console.log("App.js__BEFORE RETURN", searchResults);
